@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="container-box">
+        <div id="sections">
+            <div id="section-left">
+                <img id="img-cel" src="imagenes/cel.PNG">
+                
+            </div>
+
+            <div id="section-right">
+                <img id="img-logo" src="imagenes/tipografia.PNG">
+                <form>
+                    <div class="d-grid gap-2 col-10 mx-auto">
+                        <input id="user" class="input-user" type="text">
+                        <label id="label-user" class="label-user">Teléfono, usuario o correo electrónico</label>
+                        <input id="password" class="input-user" type="password">
+                        <label id="label-password" class="label-user">Contraseña</label>
+                    </div>
+                    <div class="section-two">
+                        <div class="d-grid gap-2 col-10 mx-auto">
+                            <button id="btn-sign-in" type="button" class="btn btn-primary" disabled>Iniciar sesión</button>
+                        </div>
+                        <div class="box-rare">
+                            <div class="line-o"></div>
+                            <div class="division-o">o</div>
+                            <div class="line-o"></div>
+                        </div>
+
+                        <div id="box-sign-in-fb" class="d-grid col-10 mx-auto">
+                            <button class="btn">
+                                <img src="imagenes/logo-fb.PNG">
+                                <span class="text-fb">Iniciar sesión con Facebook</span>
+                            </button>
+                        </div>
+
+                        <a class="forgot-password" href="/accounts/password/reset/" tabindex="0">¿Has olvidado la contraseña?</a>
+                    </div>
+                </form>
+
+                <div id="boxRegister">
+                    <p id="text-boxRegister">¿No tienes una cuenta? <a href="#" id="link-boxRegister"><span>Regístrate</span></a></p>
+                </div>
+
+                <div id="boxDownloadInstagram">
+                    <p>Descarga la aplicación</p>
+                    <div id="boxDownloadInstagramIMG">
+                        <a href="#"><img src="imagenes/downloadApple.PNG"></a>
+                        <a href="#"><img src="imagenes/downloadAndroid.PNG"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function()
+	{
+        $("#user").blur(function(){
+                    let check = $('#user').val().length; 
+                    let check2 = $('#password').val().length; 
+                    let label_user;
+
+                    if(check>0 && check2==0){
+                        $("#btn-sign-in").css("opacity", "0.4");                 
+                       
+                    }
+
+                    else if(check > 0 && check2> 0){
+                        $("#btn-sign-in").css("opacity", "1");
+                    }
+
+                    else{
+                        $("#btn-sign-in").css("opacity", "0.4");
+        
+                    }
+                    
+
+        });
+
+        $("#password").blur(function(){
+                //$(this).css("background-color", "#FFFFCC");
+            
+                let check = $('#user').val().length; 
+                let check2 = $('#password').val().length; 
+
+                if(check > 0 && check2 > 0){
+                    $("#btn-sign-in").css("opacity", "1");
+                }
+                else{
+                    $("#btn-sign-in").css("opacity", "0.4");
+                }          
+        
+                    
+        });
+
+        function moverLabel(valor){
+                let checkUser = $("#"+valor).val().length; 
+                let labelUser;
+                if(checkUser==0 || checkUser>0){
+                    labelUser = $("#label-"+valor).css("bottom", "58px");
+                    labelUser = $("#label-"+valor).css("font-size", "10px");
+                }
+
+                $("#"+valor).focusout(function(){
+                    checkUser = $("#"+valor).val().length; 
+                    labelUser;
+                    if(checkUser==0){
+                        labelUser = $("#label-"+valor).css("bottom", "38px");
+                        labelUser = $("#label-"+valor).css("font-size", "12px");
+                    }
+                });
+        };
+
+        $('body').on('click', 'input', function(){
+            let input_seleccionado = $(this).attr("id");
+            moverLabel(input_seleccionado);  
+
+        });
+
+        
+
+    
+    });
+    </script>
+</body>
+</html>
+
+
